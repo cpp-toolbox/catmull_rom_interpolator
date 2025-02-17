@@ -10,7 +10,14 @@ CatmullRomInterpolator::CatmullRomInterpolator(std::vector<glm::vec3> points, do
     compute_coefs();
 }
 
-int CatmullRomInterpolator::get_num_points() { return points.size(); }
+int CatmullRomInterpolator::get_num_points() const { return points.size(); }
+
+glm::vec3 CatmullRomInterpolator::get_point(int i) const {
+    if (i < 0 || i >= static_cast<int>(points.size())) {
+        throw std::out_of_range("Index out of bounds for points vector.");
+    }
+    return points[i];
+}
 
 glm::vec3 CatmullRomInterpolator::interpolate(double ms_curr_time) {
     if (ms_curr_time <= ms_start_time) {

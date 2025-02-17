@@ -6,15 +6,20 @@
 
 class CatmullRomInterpolator {
   public:
+    // TODO: needs to take in duration (seconds) instead
     CatmullRomInterpolator(std::vector<glm::vec3> points, double ms_start_time, double ms_end_time, float tau);
 
+    // TODO: needs to take in a delta time
     glm::vec3 interpolate(double ms_curr_time);
 
+    // TODO: we need a function to update the duration and tension value
+
+    glm::vec3 get_point(int i) const;
     void insert_point(int i, glm::vec3 point);
     void delete_point(int i);
     void update_point(int i, glm::vec3 point);
 
-    int get_num_points();
+    int get_num_points() const;
 
   private:
     std::vector<glm::vec3> points;
