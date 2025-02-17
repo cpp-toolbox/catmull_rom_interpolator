@@ -10,6 +10,8 @@ CatmullRomInterpolator::CatmullRomInterpolator(std::vector<glm::vec3> points, do
     compute_coefs();
 }
 
+int CatmullRomInterpolator::get_num_points() { return points.size(); }
+
 glm::vec3 CatmullRomInterpolator::interpolate(double ms_curr_time) {
     if (ms_curr_time <= ms_start_time) {
         return points[1];

@@ -14,6 +14,8 @@ class CatmullRomInterpolator {
     void delete_point(int i);
     void update_point(int i, glm::vec3 point);
 
+    int get_num_points();
+
   private:
     std::vector<glm::vec3> points;
     std::vector<glm::vec3> coefs_constant;
