@@ -86,7 +86,7 @@ void CatmullRomInterpolator::delete_point(int i) {
 
     if (points.size() >= 4) {
         int j = std::clamp(i - 1, 0, (int)polynomials.size());
-        polynomials.emplace(polynomials.begin() + j);
+        polynomials.erase(polynomials.begin() + j);
         init_polynomials(std::max(j - 3, 0), std::min(j, (int)polynomials.size()));
     }
 
