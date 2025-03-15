@@ -10,6 +10,7 @@ class CatmullRomInterpolator {
     CatmullRomInterpolator(double duration, float tau);
 
     glm::vec3 interpolate(double deltaTime);
+    void reset();
 
     int get_num_points() const;
     glm::vec3 get_point(int i) const;
