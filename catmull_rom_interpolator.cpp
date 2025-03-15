@@ -50,7 +50,10 @@ glm::vec3 CatmullRomInterpolator::interpolate(double deltaTime) {
            polynomials[i].coef_cubic * t * t * t;
 }
 
-void CatmullRomInterpolator::reset() { accumulatedTime = 0.0; }
+void CatmullRomInterpolator::reset() {
+    accumulatedTime = 0.0;
+    cache.i = -1;
+}
 
 int CatmullRomInterpolator::get_num_points() const { return points.size(); }
 
