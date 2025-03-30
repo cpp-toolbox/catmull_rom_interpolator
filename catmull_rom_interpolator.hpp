@@ -3,13 +3,12 @@
 
 #include <glm/glm.hpp> // TODO: make generic
 #include <vector>
-#include <memory>
 
 class CatmullRomInterpolator {
   public:
     CatmullRomInterpolator(double duration, float tau);
 
-    glm::vec3 interpolate(double deltaTime);
+    glm::vec3 interpolate(double delta_time);
     void reset();
 
     int get_num_points() const;
@@ -24,6 +23,11 @@ class CatmullRomInterpolator {
 
     float get_tension();
     void set_tension(float tau);
+
+    std::vector<float> get_accumulated_arc_lengths();
+
+    // bad - make private
+    double accumulated_time;
 
   private:
     struct Polynomial {
@@ -41,7 +45,7 @@ class CatmullRomInterpolator {
     std::vector<Point> points;
     std::vector<Polynomial> polynomials;
     double duration;
-    double accumulatedTime;
+
     float tau;
 
     struct Cache {
